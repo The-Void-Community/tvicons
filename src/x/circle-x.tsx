@@ -1,15 +1,16 @@
-import type { CircleXProps, SvgProps } from "./constants";
+import type { CircleXProps, AdditionalProps } from "./constants";
 import { CIRCLE_X_MULTIPLIER, CIRCLE_X_PADDING, STROKE_WIDTH } from "./constants";
 
-export const CircleX = ({ 
+const CircleX = ({ 
   size: sizeWithoutPadding = 24,
   color = "var(--bg-default)",
   background = "var(--fg-default)",
   constantStrokeWidth = false,
   dangerousIgnoreError = false,
   multiplier = CIRCLE_X_MULTIPLIER,
+  className,
   ...props
-}: (CircleXProps & SvgProps)) => {
+}: AdditionalProps<CircleXProps>) => {
   const size = sizeWithoutPadding - CIRCLE_X_PADDING;
   if (size < 16 && !dangerousIgnoreError) {
     throw new Error("size of X can not be less than 16");
@@ -46,23 +47,35 @@ export const CircleX = ({
   }
 
   return (
-    <svg
-      width={svgSize}
-      height={svgSize}
-      viewBox={`0 0 ${svgSize} ${svgSize}`}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      className={[
+        "block h-fit w-fit",
+        className
+      ].join(" ")}
       {...props}
     >
-      <circle
-        cx={center}
-        cy={center}
-        r={center}
-        fill={background}
-      />
+      <svg
+        width={svgSize}
+        height={svgSize}
+        viewBox={`0 0 ${svgSize} ${svgSize}`}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx={center}
+          cy={center}
+          r={center}
+          fill={background}
+        />
 
-      {XLine(45)}
-      {XLine(-45)}
-    </svg>
+        {XLine(45)}
+        {XLine(-45)}
+      </svg>
+    </div>
   );
 };
+
+export {
+  CircleX,
+  CircleX as TvCircleX
+}

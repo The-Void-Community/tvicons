@@ -1,13 +1,14 @@
-import type { SvgProps, XProps } from "./constants";
+import type { AdditionalProps, XProps } from "./constants";
 import { STROKE_WIDTH, X_PADDING } from "./constants";
 
-export const X = ({ 
+const X = ({ 
   size: sizeWithoutPadding = 24,
   color = "#D9D9D9",
   constantStrokeWidth = false,
   dangerousIgnoreError = false,
+  className,
   ...props
-}: (XProps & SvgProps)) => {
+}: AdditionalProps<XProps>) => {
   const size = sizeWithoutPadding - X_PADDING;
   const svgSize = size + X_PADDING;
   const center = svgSize / 2;
@@ -39,16 +40,28 @@ export const X = ({
   }
 
   return (
-    <svg
-      width={svgSize}
-      height={svgSize}
-      viewBox={`0 0 ${svgSize} ${svgSize}`}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      className={[
+        "block h-fit w-fit",
+        className
+      ].join(" ")}
       {...props}
     >
-      {XLine(45)}
-      {XLine(-45)}
-    </svg>
+      <svg
+        width={svgSize}
+        height={svgSize}
+        viewBox={`0 0 ${svgSize} ${svgSize}`}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {XLine(45)}
+        {XLine(-45)}
+      </svg>
+    </div>
   );
+};
+
+export {
+  X,
+  X as TvX
 };

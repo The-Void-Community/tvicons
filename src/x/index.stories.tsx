@@ -18,7 +18,8 @@ export const Circle_X: StoryObj<typeof CircleX> = {
   render: (args) => (<CircleX {...args} />),
   args: {
     multiplier: 0.8,
-    size: 24
+    size: 24,
+    className: "cursor-pointer"
   }
 }
 

@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import type { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export type XProps = {
   size?: number;
@@ -19,7 +19,7 @@ export type Exclude =
  | "fill"
  | "xmlns"
 
-export type SvgProps = Omit<SVGProps<SVGSVGElement>, keyof XProps | Exclude>;
+export type AdditionalProps<T> = T & Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "children">;
 
 export const X_PADDING = 2;
 export const CIRCLE_X_PADDING = 4;
