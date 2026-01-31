@@ -1,21 +1,15 @@
-type XProps = {
-  size?: number;
-  color?: string;
-  dangerousIgnoreError?: boolean;
-  constantStrokeWidth?: boolean;
-};
-
-const PADDING = 2;
-const STROKE_WIDTH = 2;
+import type { SvgProps, XProps } from "./constants";
+import { STROKE_WIDTH, X_PADDING } from "./constants";
 
 export const X = ({ 
   size: sizeWithoutPadding = 24,
   color = "#D9D9D9",
   constantStrokeWidth = false,
-  dangerousIgnoreError = false
-}: XProps) => {
-  const size = sizeWithoutPadding - PADDING;
-  const svgSize = size + PADDING;
+  dangerousIgnoreError = false,
+  ...props
+}: (XProps & SvgProps)) => {
+  const size = sizeWithoutPadding - X_PADDING;
+  const svgSize = size + X_PADDING;
   const center = svgSize / 2;
 
   const strokeWidth = constantStrokeWidth || size >= 24
@@ -51,6 +45,7 @@ export const X = ({
       viewBox={`0 0 ${svgSize} ${svgSize}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       {XLine(45)}
       {XLine(-45)}

@@ -1,15 +1,5 @@
-type XProps = {
-  size?: number;
-  color?: string;
-  background?: string;
-  dangerousIgnoreError?: boolean;
-  constantStrokeWidth?: boolean;
-  multiplier?: number;
-};
-
-const PADDING = 4;
-const STROKE_WIDTH = 2;
-const MULTIPLIER = 0.8;
+import type { CircleXProps, SvgProps } from "./constants";
+import { CIRCLE_X_MULTIPLIER, CIRCLE_X_PADDING, STROKE_WIDTH } from "./constants";
 
 export const CircleX = ({ 
   size: sizeWithoutPadding = 24,
@@ -17,18 +7,19 @@ export const CircleX = ({
   background = "var(--fg-default)",
   constantStrokeWidth = false,
   dangerousIgnoreError = false,
-  multiplier = MULTIPLIER
-}: XProps) => {
-  const size = sizeWithoutPadding - PADDING;
+  multiplier = CIRCLE_X_MULTIPLIER,
+  ...props
+}: (CircleXProps & SvgProps)) => {
+  const size = sizeWithoutPadding - CIRCLE_X_PADDING;
   if (size < 16 && !dangerousIgnoreError) {
     throw new Error("size of X can not be less than 16");
   }
 
-  if (multiplier > MULTIPLIER) {
-    throw new Error("multiplier of X can not be more than " + MULTIPLIER);
+  if (multiplier > CIRCLE_X_MULTIPLIER) {
+    throw new Error("multiplier of X can not be more than " + CIRCLE_X_MULTIPLIER);
   }
 
-  const svgSize = size + PADDING;
+  const svgSize = size + CIRCLE_X_PADDING;
   const xSize = size * multiplier;
   const center = svgSize / 2;
 
@@ -61,6 +52,7 @@ export const CircleX = ({
       viewBox={`0 0 ${svgSize} ${svgSize}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <circle
         cx={center}
