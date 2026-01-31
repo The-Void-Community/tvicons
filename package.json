@@ -1,0 +1,86 @@
+{
+  "name": "tvicons",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "description": "A modern icons for The Void Community projects",
+  "main": "./dist/tvicons.umd.js",
+  "module": "./dist/tvicons.es.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/tvicons.es.d.ts",
+      "import": "./dist/tvicons.es.js"
+    }
+  },
+  "author": {
+    "name": "FOCKUSTY",
+    "email": "viserd.yt@gmail.com",
+    "url": "https://fockusty.netlify.app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Void-Community/tvicons.git"
+  },
+  "homepage": "https://github.com/The-Void-Community/tvicons#readme",
+  "bugs": {
+    "url": "https://github.com/The-Void-Community/tvicons/issues"
+  },
+  "keywords": [
+    "react",
+    "ui-kit",
+    "components",
+    "design-system"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6010",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/vite": "^4.1.18",
+    "clsx": "^2.1.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^5.0.0",
+    "@eslint/js": "^9.39.2",
+    "@storybook/addon-docs": "^10.2.3",
+    "@storybook/addon-links": "^10.2.3",
+    "@storybook/addon-onboarding": "^10.2.3",
+    "@storybook/addon-themes": "10.2.3",
+    "@storybook/react-vite": "10.2.3",
+    "@types/node": "^25.0.3",
+    "@types/react": "^19.2.10",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.51.0",
+    "@typescript-eslint/parser": "^8.51.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "autoprefixer": "^10.4.23",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "eslint-plugin-storybook": "^10.2.3",
+    "globals": "^17.0.0",
+    "postcss": "^8.5.6",
+    "storybook": "^10.2.3",
+    "styled-components": "^6.1.19",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.51.0",
+    "vite": "^7.3.0",
+    "vite-plugin-dts": "^4.5.4"
+  }
+}
